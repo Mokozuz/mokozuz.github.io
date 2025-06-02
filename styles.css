@@ -1,0 +1,259 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+.game-container {
+    background-color: #111;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.game-header {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+#gameCanvas {
+    background-color: #000;
+    border: 2px solid #0ff;
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+}
+
+.game-controls {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#startButton {
+    background-color: #0ff;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background-color 0.3s;
+}
+
+#startButton:hover {
+    background-color: #00cccc;
+}
+
+.mobile-controls {
+    display: none;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+    padding: 10px;
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+
+.mobile-controls button {
+    background-color: rgba(0, 255, 255, 0.8);
+    color: #000;
+    border: none;
+    padding: 20px 30px;
+    font-size: 1.5em;
+    border-radius: 50%;
+    cursor: pointer;
+    min-width: 80px;
+    min-height: 80px;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease;
+}
+
+.mobile-controls button:active {
+    transform: scale(0.95);
+    background-color: rgba(0, 255, 255, 1);
+}
+
+#fireButton {
+    background-color: rgba(255, 0, 0, 0.8) !important;
+    color: white !important;
+}
+
+#fireButton:active {
+    background-color: rgba(255, 0, 0, 1) !important;
+}
+
+@media (max-width: 768px) {
+    .game-container {
+        padding: 10px;
+        width: 100%;
+        max-width: 100vw;
+        margin: 0;
+        border-radius: 0;
+    }
+
+    .game-header {
+        font-size: 1.2em;
+        padding: 10px;
+    }
+
+    .mobile-controls {
+        display: flex;
+    }
+
+    #gameCanvas {
+        width: 100%;
+        height: auto;
+        max-height: 70vh;
+        border: none;
+    }
+
+    .sorpresa-contenido {
+        width: 90%;
+        max-width: 350px;
+        margin: 20px;
+        padding: 20px;
+    }
+
+    .sorpresa-contenido h2 {
+        font-size: 1.8em;
+    }
+
+    .sorpresa-contenido p {
+        font-size: 1.1em;
+    }
+
+    .sorpresa-contenido button {
+        padding: 15px 30px;
+        font-size: 1.2em;
+    }
+}
+
+/* Prevenir zoom en dispositivos móviles */
+@media (max-width: 768px) {
+    html, body {
+        touch-action: manipulation;
+        -webkit-text-size-adjust: 100%;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    * {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+}
+
+/* Ajustes para pantallas muy pequeñas */
+@media (max-width: 360px) {
+    .mobile-controls button {
+        padding: 15px 25px;
+        min-width: 60px;
+        min-height: 60px;
+        font-size: 1.2em;
+    }
+
+    .game-header {
+        font-size: 1em;
+    }
+}
+
+.sorpresa-text {
+    color: #ffd700;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation: brillar 2s infinite;
+}
+
+@keyframes brillar {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+.mensaje-sorpresa {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: aparecer 0.5s ease-out;
+}
+
+.sorpresa-contenido {
+    background: linear-gradient(135deg, #1a1a1a, #4a4a4a);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    color: #fff;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    border: 2px solid #ffd700;
+    max-width: 400px;
+    animation: brillar 2s infinite;
+}
+
+.sorpresa-contenido h2 {
+    color: #ffd700;
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.sorpresa-contenido p {
+    margin: 10px 0;
+    font-size: 1.2em;
+}
+
+.sorpresa-contenido button {
+    background: #ffd700;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.sorpresa-contenido button:hover {
+    background: #ffed4a;
+    transform: scale(1.05);
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+} 

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mattelsa Invaders</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        // Función para verificar que la página se cargó correctamente
+        window.onload = function() {
+            console.log('Página cargada completamente');
+            // Verificar que todos los elementos necesarios existen
+            const elements = {
+                'canvas': document.getElementById('gameCanvas'),
+                'score': document.getElementById('score'),
+                'startButton': document.getElementById('startButton'),
+                'leftButton': document.getElementById('leftButton'),
+                'rightButton': document.getElementById('rightButton'),
+                'fireButton': document.getElementById('fireButton'),
+                'shootSound': document.getElementById('shootSound'),
+                'explosionSound': document.getElementById('explosionSound')
+            };
+
+            for (const [name, element] of Object.entries(elements)) {
+                if (!element) {
+                    console.error(`Error: No se encontró el elemento ${name}`);
+                    document.body.innerHTML += `<div style="color: red; padding: 10px;">Error: No se encontró el elemento ${name}</div>`;
+                } else {
+                    console.log(`Elemento ${name} encontrado correctamente`);
+                }
+            }
+        };
+    </script>
+</head>
+<body>
+    <div id="debug" style="position: fixed; top: 0; left: 0; background: rgba(0,0,0,0.8); color: white; padding: 10px; z-index: 1000; display: none;"></div>
+    
+    <div class="game-container">
+        <div class="game-header">
+            <h1>Mattelsa Invaders</h1>
+            <p class="sorpresa-text">¡Acumula 200 puntos y gana una sorpresa!</p>
+            <div class="score">Puntuación: <span id="score">0</span></div>
+        </div>
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+        <div class="game-controls">
+            <button id="startButton" onclick="console.log('Botón de inicio clickeado')">Iniciar Juego</button>
+            <div class="mobile-controls">
+                <button id="leftButton">←</button>
+                <button id="rightButton">→</button>
+                <button id="fireButton">Disparar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Precargar sonidos -->
+    <audio id="shootSound" preload="auto">
+        <source src="sounds/shoot.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+    <audio id="explosionSound" preload="auto">
+        <source src="sounds/explosion.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <!-- Script del juego -->
+    <script>
+        // Verificar que el script se carga
+        console.log('Cargando script del juego...');
+    </script>
+    <script src="game.js"></script>
+    <script>
+        // Verificar que el script se cargó
+        console.log('Script del juego cargado');
+        
+        // Mostrar información de depuración
+        const debug = document.getElementById('debug');
+        debug.style.display = 'block';
+        debug.innerHTML = `
+            <div>Canvas: ${document.getElementById('gameCanvas') ? 'OK' : 'ERROR'}</div>
+            <div>Score: ${document.getElementById('score') ? 'OK' : 'ERROR'}</div>
+            <div>Start Button: ${document.getElementById('startButton') ? 'OK' : 'ERROR'}</div>
+            <div>Sounds: ${document.getElementById('shootSound') && document.getElementById('explosionSound') ? 'OK' : 'ERROR'}</div>
+        `;
+    </script>
+</body>
+</html> 
